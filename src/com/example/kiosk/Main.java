@@ -15,6 +15,7 @@ public class Main {
         boolean flag = true;
 
         while (flag) {
+            System.out.println();
             System.out.println("[ "+ "SHAKESHACK MENU"+ " ]");
             int i = menuItems.size()-1;
             for (MenuItem menuItem : menuItems) {
@@ -22,19 +23,20 @@ public class Main {
                 i--;
             }
             System.out.println("0. 종료      | 종료");
-            System.out.println("숫자를 선택해주세요");
+            System.out.print("숫자를 선택해주세요 : ");
             int chooseMenu = sc.nextInt();
             switch (chooseMenu) {
                 case 0 -> {
                     System.out.println("프로그램을 종료합니다");
                     flag = false;
                 }
-                case 1 -> System.out.println("ShackBurger를 선택하셨습니다");
-                case 2 -> System.out.println("SmokeShack를 선택하셨습니다");
-                case 3 -> System.out.println("Cheeseburger를 선택하셨습니다");
-                case 4 -> System.out.println("Hamburger를 선택하셨습니다");
+                case 1 -> System.out.println("선택한 메뉴 :  1. " + menuItems.get(0).name + "  | W " + menuItems.get(0).price + " | " + menuItems.get(0).explanation);
+                case 2 -> System.out.println("선택한 메뉴 :  2. " + menuItems.get(1).name + "  | W " + menuItems.get(1).price + " | " + menuItems.get(1).explanation);
+                case 3 -> System.out.println("선택한 메뉴 :  3. " + menuItems.get(2).name + "  | W " + menuItems.get(2).price + " | " + menuItems.get(2).explanation);
+                case 4 -> System.out.println("선택한 메뉴 :  4. " + menuItems.get(3).name + "  | W " + menuItems.get(3).price + " | " + menuItems.get(3).explanation);
                 default -> System.out.println("메뉴에 있는 숫자만 써주세요");
             }
         }
+
     }
 }
