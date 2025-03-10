@@ -1,9 +1,9 @@
 package com.example.kiosk;
 
 public class MenuItem {
-    private String name;
-    private double price;
-    private String explanation;
+    private final String name;
+    private final double price;
+    private final String explanation;
 
     MenuItem(String name, double price, String explanation) {
         this.name = name;

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Kiosk {
     private Menu menu = new Menu();
     private final List<Menu> listMenus = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
     private boolean flag = true;
 
     public void start() {
