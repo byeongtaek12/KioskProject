@@ -14,10 +14,10 @@ public class MenuItem {
     public String getName() {
         return name;
     }
-    public double getprice() {
+    public double getPrice() {
         return price;
     }
-    public String getexplanation() {
+    public String getExplanation() {
         return explanation;
     }
 }
