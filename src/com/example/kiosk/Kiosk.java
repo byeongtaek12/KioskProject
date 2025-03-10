@@ -25,18 +25,9 @@ public class Kiosk {
                     System.out.println("프로그램을 종료합니다");
                     flag = false;
                 }
-                case 1 -> {
-                    menu = new Menu("Burgers");
-                    System.out.println("선택한 메인메뉴 :  1. "+ menu.getCategory());
-                }
-                case 2 -> {
-                    menu = new Menu("Drinks");
-                    System.out.println("선택한 메인메뉴 :  2. "+ menu.getCategory());
-                }
-                case 3 -> {
-                    menu = new Menu("Desserts");
-                    System.out.println("선택한 메인메뉴 :  3. "+ menu.getCategory());
-                }
+                case 1 -> System.out.println("선택한 메인메뉴 :  1. "+ menu.getCategory());
+                case 2 -> System.out.println("선택한 메인메뉴 :  2. "+ menu.getCategory());
+                case 3 -> System.out.println("선택한 메인메뉴 :  3. "+ menu.getCategory());
                 default -> {
                     System.out.println("메뉴에 있는 숫자만 써주세요");
                     continue;
