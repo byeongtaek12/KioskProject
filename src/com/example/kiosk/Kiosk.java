@@ -1,16 +1,28 @@
 package com.example.kiosk;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
     private Menu menu = new Menu();
+    private final List<Menu> listMenus = new ArrayList<>();
     private Scanner sc = new Scanner(System.in);
     private boolean flag = true;
 
     public void start() {
+        listMenus.add(new Menu("Burgers"));
+        listMenus.add(new Menu("Drinks"));
+        listMenus.add(new Menu("Desserts"));
         while (flag) {
-            menu.showParentMenuCategory();
+            System.out.println();
+            System.out.println("[ MAIN MENU" + " ]");
+            for (int i = 0; i< listMenus.size(); i++) {
+                System.out.println(i+1+"." + " " +listMenus.get(i).getCategory());
+            }
+            System.out.println("0. 종료      | 종료");
+            System.out.println();
             System.out.print("메뉴를 선택해주세요 : ");
             int chooseParentMenu;
             try {
@@ -25,9 +37,18 @@ public class Kiosk {
                     System.out.println("프로그램을 종료합니다");
                     flag = false;
                 }
-                case 1 -> System.out.println("선택한 메인메뉴 :  1. "+ menu.getCategory());
-                case 2 -> System.out.println("선택한 메인메뉴 :  2. "+ menu.getCategory());
-                case 3 -> System.out.println("선택한 메인메뉴 :  3. "+ menu.getCategory());
+                case 1 -> {
+                        menu = new Menu("Burgers");
+                        System.out.println("선택한 메인메뉴 :  1. "+ menu.getCategory());
+                }
+                case 2 -> {
+                    menu = new Menu("Drinks");
+                    System.out.println("선택한 메인메뉴 :  2. "+ menu.getCategory());
+                }
+                case 3 -> {
+                    menu = new Menu("Desserts");
+                    System.out.println("선택한 메인메뉴 :  3. "+ menu.getCategory());
+                }
                 default -> {
                     System.out.println("메뉴에 있는 숫자만 써주세요");
                     continue;
@@ -40,8 +61,9 @@ public class Kiosk {
             while (true) {
                 System.out.println();
                 System.out.println("[ " + menu.getCategory() + "MENU" + " ]");
-                menu.showChildMenuCategory();
+                menu.showMenuCategory();
                 System.out.println("0. 되돌아가기      | 되돌아가기");
+                System.out.println();
                 System.out.print("메뉴를 선택해주세요 : ");
                 int chooseChildMenu;
                 try {
