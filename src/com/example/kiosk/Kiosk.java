@@ -32,27 +32,15 @@ public class Kiosk {
                 sc.nextLine();
                 continue;
             }
-            switch (chooseParentMenu) {
-                case 0 -> {
-                    System.out.println("프로그램을 종료합니다");
-                    flag = false;
-                }
-                case 1 -> {
-                        menu = new Menu("Burgers");
-                        System.out.println("선택한 메인메뉴 :  1. "+ menu.getCategory());
-                }
-                case 2 -> {
-                    menu = new Menu("Drinks");
-                    System.out.println("선택한 메인메뉴 :  2. "+ menu.getCategory());
-                }
-                case 3 -> {
-                    menu = new Menu("Desserts");
-                    System.out.println("선택한 메인메뉴 :  3. "+ menu.getCategory());
-                }
-                default -> {
-                    System.out.println("메뉴에 있는 숫자만 써주세요");
-                    continue;
-                }
+            if (chooseParentMenu ==0 ) {
+                System.out.println("프로그램을 종료합니다");
+                flag = false;
+            }else if (chooseParentMenu > 0 && chooseParentMenu < 4) {
+                menu = listMenus.get(chooseParentMenu-1);
+                System.out.println("선택한 메인메뉴 :  " + chooseParentMenu + ". "+ menu.getCategory());
+            }else {
+                System.out.println("메뉴에 있는 숫자만 써주세요");
+                continue;
             }
 
             if (chooseParentMenu==0) {
