@@ -35,12 +35,8 @@ public class Menu {
             default -> System.out.println("카테고리에 있는 것만 선택해주세요");
         }
     }
-    public void showParentMenuCategory() {
-        System.out.println();
-        System.out.println("[ MAIN MENU ] \n 1. Burgers \n 2. Drinks \n 3. Desserts \n 0. 종료      | 종료");
-    }
 
-    public void showChildMenuCategory() {
+    public void showMenuCategory() {
         int i = menuItems.size()-1;
         for (MenuItem menuItem : menuItems) {
             System.out.println(menuItems.size()-i +". " + menuItem.getName() + "  | W " + menuItem.getPrice() + " | " + menuItem.getExplanation());
