@@ -12,13 +12,6 @@ public class ShoppingCart {
     public ShoppingCart() {
     }
 
-    public ShoppingCart (String name, int count, int price) {
-         this.name = name;
-         this.count = count;
-         this.price = price;
-     }
-
-
      public void addShoppingCart(String menu) {
          this.shoppingCart.add(menu);
      }
