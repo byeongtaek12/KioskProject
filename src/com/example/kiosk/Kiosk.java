@@ -104,7 +104,7 @@ public class Kiosk {
     }
 
     // 입출력 및 예외처리 메서드
-    public int io(String choose, int min,int max) {
+    private int io(String choose, int min,int max) {
         while (true) {
             try {
                 while (true) {
