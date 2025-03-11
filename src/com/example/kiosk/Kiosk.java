@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
-    private Menu menu = new Menu();
     private ShoppingCart shoppingCart = new ShoppingCart();
     private final List<Menu> listMenus = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
-    private boolean flag = true;
 
     public void start() {
+        Menu menu = new Menu();
         listMenus.add(new Menu("Burgers"));
         listMenus.add(new Menu("Drinks"));
         listMenus.add(new Menu("Desserts"));
-        while (flag) {
+        while (true) {
             System.out.println();
             System.out.println("[ MAIN MENU" + " ]");
             for (int i = 0; i< listMenus.size(); i++) {
@@ -35,7 +34,6 @@ public class Kiosk {
             }
             if (chooseParentMenu ==0 ) {
                 System.out.println("프로그램을 종료합니다");
-                flag = false;
             }else if (chooseParentMenu > 0 && chooseParentMenu < 4) {
                 menu = listMenus.get(chooseParentMenu-1);
                 System.out.println("선택한 메인메뉴 :  " + chooseParentMenu + ". "+ menu.getCategory());
