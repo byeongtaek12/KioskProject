@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
-    private ShoppingCart shoppingCart = new ShoppingCart();
+    private final ShoppingCart shoppingCart = new ShoppingCart();
     private final List<Menu> listMenus = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
 
