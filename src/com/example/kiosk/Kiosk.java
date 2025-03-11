@@ -17,8 +17,7 @@ public class Kiosk {
     }
 
     public void start() {
-        Menu menu = new Menu();
-
+        Menu menu;
         while (true) {
             int chooseParentMenu;
             int chooseOrderAndMenu = 0;
