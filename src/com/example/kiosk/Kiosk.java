@@ -20,6 +20,8 @@ public class Kiosk {
         Menu menu;
         while (true) {
             System.out.println();
+
+            // 메인 메뉴 시작
             System.out.println("[ MAIN MENU" + " ]");
             for (int i = 0; i< listMenus.size(); i++) {
                 System.out.println(i+1+"." + " " +listMenus.get(i).getCategory());
@@ -31,10 +33,13 @@ public class Kiosk {
                 System.out.println("프로그램을 종료합니다");
                 break;
             } else {
+
                 menu = listMenus.get(chooseParentMenu - 1);
                 System.out.println("선택한 메인메뉴 :  " + chooseParentMenu + ". " + menu.getCategory());
             }
             System.out.println();
+
+            // 부 메뉴 시작
             System.out.println("[ " + menu.getCategory() + "MENU" + " ]");
             menu.showMenuCategory();
             System.out.println("0. 되돌아가기      | 되돌아가기");
@@ -47,6 +52,8 @@ public class Kiosk {
                 System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
                 System.out.println();
                 System.out.println();
+
+                // 장바구니 추가 및 취소 기능
                 System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).toString());
                 System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
                 System.out.println("1. 확인        2. 취소");
@@ -58,6 +65,8 @@ public class Kiosk {
                     System.out.println("취소되었습니다");
                 }
             }
+
+            // 카트 주문 및 취소 기능
             if (!shoppingCart.getShoppingCart().isEmpty()) {
                 int chooseOrderMenu;
                 System.out.println();
@@ -93,7 +102,8 @@ public class Kiosk {
             }
         }
     }
-    // 입출력 메서드
+
+    // 입출력 및 예외처리 메서드
     public int io(String choose, int min,int max) {
         while (true) {
             try {
