@@ -29,66 +29,42 @@ public class Kiosk {
             }
             System.out.println("0. 종료      | 종료");
             System.out.println();
-            System.out.print("메뉴를 선택해주세요 : ");
-
-            try {
-                chooseParentMenu = sc.nextInt();
-                if (chooseParentMenu == 0) {
-                    System.out.println("프로그램을 종료합니다");
-                    break;
-                }else {
-                    menu = listMenus.get(chooseParentMenu-1);
-                    System.out.println("선택한 메인메뉴 :  " + chooseParentMenu + ". "+ menu.getCategory());
-                }
-            } catch (InputMismatchException | IndexOutOfBoundsException e) {
-                System.out.println("메뉴에 있는 숫자만 입력해주세요");
-                sc.nextLine();
-                continue;
+            chooseParentMenu = io("메뉴를 선택해주세요 : ",0,3);
+            if (chooseParentMenu == 0) {
+                System.out.println("프로그램을 종료합니다");
+                break;
+            } else {
+                menu = listMenus.get(chooseParentMenu - 1);
+                System.out.println("선택한 메인메뉴 :  " + chooseParentMenu + ". " + menu.getCategory());
             }
-
             while (true) {
                 System.out.println();
                 System.out.println("[ " + menu.getCategory() + "MENU" + " ]");
                 menu.showMenuCategory();
                 System.out.println("0. 되돌아가기      | 되돌아가기");
                 System.out.println();
-                System.out.print("메뉴를 선택해주세요 : ");
-                int chooseChildMenu;
-                try {
-                    chooseChildMenu = sc.nextInt();
-                    if (chooseChildMenu == 0) {
-                        System.out.println("되돌아갑니다");
-                    } else {
-                        while (true) {
-                            System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
-                            System.out.println();
-                            System.out.println();
-                            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).toString());
-                            System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
-                            System.out.println("1. 확인        2. 취소");
-                            System.out.print("번호를 선택해주세요 : ");
-                            try {
-                                int chooseShoppingCartMenu = sc.nextInt();
-                                switch (chooseShoppingCartMenu) {
-                                    case 1-> {
-                                        shoppingCart.addShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).toString());
-                                        System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
-                                    }
-                                    case 2-> System.out.println("취소되었습니다");
-                                    default -> throw new IndexOutOfBoundsException();
-                                }
-                            } catch (InputMismatchException | IndexOutOfBoundsException e) {
-                                System.out.println("메뉴에 있는 숫자만 써주세요");
-                                sc.nextLine();
-                                continue;
+                int chooseChildMenu = io("메뉴를 선택해주세요 : ",0,4);
+                if (chooseChildMenu == 0) {
+                    System.out.println("되돌아갑니다");
+                } else {
+                    while (true) {
+                        System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
+                        System.out.println();
+                        System.out.println();
+                        System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).toString());
+                        System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
+                        System.out.println("1. 확인        2. 취소");
+                        int chooseShoppingCartMenu = io("번호를 선택해주세요 : ",1,2);
+                        switch (chooseShoppingCartMenu) {
+                            case 1 -> {
+                                shoppingCart.addShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).toString());
+                                System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
                             }
-                            break;
+                            case 2 -> System.out.println("취소되었습니다");
+                            default -> throw new IndexOutOfBoundsException();
                         }
+                        break;
                     }
-                }catch (InputMismatchException | IndexOutOfBoundsException e) {
-                    System.out.println("메뉴에 있는 숫자만 써주세요");
-                    sc.nextLine();
-                    continue;
                 }
                 break;
             }
@@ -97,11 +73,8 @@ public class Kiosk {
                 while(true) {
                     System.out.println();
                     System.out.println("[ ORDER MENU" + " ]");
-                    System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.");
-                    System.out.println("5. Cancel       | 진행중인 주문을 취소합니다.");
-                    System.out.print("번호를 선택해주세요 : ");
-                    try {
-                        chooseOrderMenu = sc.nextInt();
+                    System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.\n 5. Cancel       | 진행중인 주문을 취소합니다.");
+                    chooseOrderMenu = io("메뉴를 선택해주세요 : ",4,5);
                         switch (chooseOrderMenu) {
                             case 4 -> {
                                 while (true) {
@@ -119,39 +92,46 @@ public class Kiosk {
                                     System.out.println("W "+sum);
                                     System.out.println();
                                     System.out.println("1. 주문      2. 메뉴판");
-                                    System.out.print("번호를 선택해주세요 : ");
-                                    try {
-                                        chooseOrderAndMenu = sc.nextInt();
-                                        switch (chooseOrderAndMenu) {
-                                            case 1-> {
-                                                System.out.println("주문이 완료되었습니다. 금액은 W "+sum +" 입니다");
-                                                shoppingCart.removeShoppingCart();
-                                            }
-                                            case 2-> System.out.println("메뉴판으로 되돌아갑니다");
-                                            default -> throw new IndexOutOfBoundsException();
+                                    chooseOrderAndMenu = io("번호를 선택해주세요 : ",1,2);
+                                    switch (chooseOrderAndMenu) {
+                                        case 1 -> {
+                                            System.out.println("주문이 완료되었습니다. 금액은 W " + sum + " 입니다");
+                                            shoppingCart.removeShoppingCart();
                                         }
-                                    }catch (InputMismatchException | IndexOutOfBoundsException e) {
-                                        System.out.println("메뉴에 있는 숫자만 써주세요");
-                                        sc.nextLine();
-                                        continue;
+                                        case 2 -> System.out.println("메뉴판으로 되돌아갑니다");
+                                        default -> System.out.println("메뉴에 나와있는 번호 중에 골라주세요");
                                     }
                                     break;
                                 }
                             }
                             case 5 -> System.out.println("진행중인 주문을 취소했습니다");
-                            default -> throw new IndexOutOfBoundsException();
+                            default -> System.out.println("메뉴에 나와있는 번호 중에 골라주세요");
                         }
-                    }catch (InputMismatchException | IndexOutOfBoundsException e) {
-                        System.out.println("메뉴에 있는 숫자만 써주세요");
-                        sc.nextLine();
-                        continue;
-                    }
                     break;
                 }
             }
            if (chooseOrderAndMenu==1) {
                break;
            }
+        }
+    }
+    // 입출력 메서드
+    public int io(String choose, int min,int max) {
+        while (true) {
+            try {
+                while (true) {
+                    System.out.print(choose);
+                    int input = sc.nextInt();
+                    if (input>=min && input<=max) {
+                        return input;
+                    }else {
+                        System.out.println("메뉴의 숫자에서만 골라주세요");
+                    }
+                }
+            }catch (InputMismatchException e){
+                System.out.println("숫자만 써주세요");
+                sc.nextLine();
+            }
         }
     }
 }
