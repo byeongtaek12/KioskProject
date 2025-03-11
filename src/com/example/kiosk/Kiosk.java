@@ -19,8 +19,6 @@ public class Kiosk {
     public void start() {
         Menu menu;
         while (true) {
-            int chooseParentMenu;
-            int chooseOrderAndMenu = 0;
             System.out.println();
             System.out.println("[ MAIN MENU" + " ]");
             for (int i = 0; i< listMenus.size(); i++) {
@@ -28,7 +26,7 @@ public class Kiosk {
             }
             System.out.println("0. 종료      | 종료");
             System.out.println();
-            chooseParentMenu = io("메뉴를 선택해주세요 : ",0,3);
+            int chooseParentMenu = io("메뉴를 선택해주세요 : ",0,3);
             if (chooseParentMenu == 0) {
                 System.out.println("프로그램을 종료합니다");
                 break;
@@ -81,7 +79,7 @@ public class Kiosk {
                     System.out.println("W " + sum);
                     System.out.println();
                     System.out.println("1. 주문      2. 메뉴판");
-                    chooseOrderAndMenu = io("번호를 선택해주세요 : ", 1, 2);
+                    int chooseOrderAndMenu = io("번호를 선택해주세요 : ", 1, 2);
                     if (chooseOrderAndMenu == 1) {
                         System.out.println("주문이 완료되었습니다. 금액은 W " + sum + " 입니다");
                         shoppingCart.removeShoppingCart();
