@@ -20,4 +20,9 @@ public class MenuItem {
     public String getExplanation() {
         return explanation;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s| W %.1f | %s", this.name, this.price,this.explanation);
+    }
 }
