@@ -10,11 +10,15 @@ public class Kiosk {
     private final List<Menu> listMenus = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
 
-    public void start() {
-        Menu menu = new Menu();
+    public Kiosk () {
         listMenus.add(new Menu("Burgers"));
         listMenus.add(new Menu("Drinks"));
         listMenus.add(new Menu("Desserts"));
+    }
+
+    public void start() {
+        Menu menu = new Menu();
+
         while (true) {
             int chooseParentMenu;
             int chooseOrderAndMenu = 0;
@@ -56,10 +60,10 @@ public class Kiosk {
                         System.out.println("되돌아갑니다");
                     } else {
                         while (true) {
-                            System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).getName() + "  | W " + menu.getMenuItems().get(chooseChildMenu - 1).getPrice() + " | " + menu.getMenuItems().get(chooseChildMenu - 1).getExplanation());
+                            System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
                             System.out.println();
                             System.out.println();
-                            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "  | W " + menu.getMenuItems().get(chooseChildMenu - 1).getPrice() + " | " + menu.getMenuItems().get(chooseChildMenu - 1).getExplanation());
+                            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).toString());
                             System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
                             System.out.println("1. 확인        2. 취소");
                             System.out.print("번호를 선택해주세요 : ");
@@ -67,7 +71,7 @@ public class Kiosk {
                                 int chooseShoppingCartMenu = sc.nextInt();
                                 switch (chooseShoppingCartMenu) {
                                     case 1-> {
-                                        shoppingCart.addShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "  | W " + menu.getMenuItems().get(chooseChildMenu - 1).getPrice() + " | " + menu.getMenuItems().get(chooseChildMenu - 1).getExplanation());
+                                        shoppingCart.addShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).toString());
                                         System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
                                     }
                                     case 2-> System.out.println("취소되었습니다");
