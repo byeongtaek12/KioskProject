@@ -8,14 +8,14 @@ import java.util.Scanner;
 public class Kiosk {
     private final Scanner sc = new Scanner(System.in);
     private ShoppingCart shoppingCart;
-    private final List<Menu> listMenus = new ArrayList<>();
+    private final List<Menu> Menulist = new ArrayList<>();
     private Menu menu;
     private int chooseChildMenu;
 
     public Kiosk () {
-        listMenus.add(new Menu("Burgers"));
-        listMenus.add(new Menu("Drinks"));
-        listMenus.add(new Menu("Desserts"));
+        Menulist.add(new Menu("Burgers"));
+        Menulist.add(new Menu("Drinks"));
+        Menulist.add(new Menu("Desserts"));
     }
 
     public void start() {
@@ -24,8 +24,8 @@ public class Kiosk {
 
             // 메인 메뉴 시작
             System.out.println("[ MAIN MENU" + " ]");
-            for (int i = 0; i< listMenus.size(); i++) {
-                System.out.println(i+1+"." + " " +listMenus.get(i).getCategory());
+            for (int i = 0; i< Menulist.size(); i++) {
+                System.out.println(i+1+"." + " " +Menulist.get(i).getCategory());
             }
             System.out.println("0. 종료      | 종료");
             System.out.println();
@@ -34,7 +34,7 @@ public class Kiosk {
                 System.out.println("프로그램을 종료합니다");
                 break;
             } else {
-                menu = listMenus.get(chooseParentMenu - 1);
+                menu = Menulist.get(chooseParentMenu - 1);
                 System.out.println("선택한 메인메뉴 :  " + chooseParentMenu + ". " + menu.getCategory());
             }
             System.out.println();
@@ -88,6 +88,14 @@ public class Kiosk {
         if (chooseShoppingCartMenu == 1) {
             shoppingCart = new ShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).getName(),1,menu.getMenuItems().get(chooseChildMenu - 1).getPrice());
             shoppingCart.addShoppingCart();
+            for (int i = 0; i<shoppingCart.getShoppingCart().size()-1; i++) {
+                for (int j = i+1; j<shoppingCart.getShoppingCart().size(); j++) {
+                    if (shoppingCart.getShoppingCart().get(i).equals(shoppingCart.getShoppingCart().get(j))) {
+                        shoppingCart.removeShoppingCart(j);
+                        shoppingCart.setCount();
+                    }
+                }
+            }
             System.out.println(shoppingCart.getName() + "이 장바구니에 추가되었습니다");
         } else {
             System.out.println("취소되었습니다");
@@ -112,7 +120,7 @@ public class Kiosk {
                 int chooseOrderAndMenu = io("번호를 선택해주세요 : ", 1, 2);
                 if (chooseOrderAndMenu == 1) {
                     System.out.println("주문이 완료되었습니다. 금액은 W " + sum + " 입니다");
-                    shoppingCart.removeShoppingCart();
+                    shoppingCart.clearShoppingCart();
                 } else {
                     System.out.println("메뉴판으로 되돌아갑니다");
                 }
