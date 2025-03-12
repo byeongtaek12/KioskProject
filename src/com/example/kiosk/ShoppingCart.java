@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-     private final List<String> shoppingCartlist = new ArrayList<>();
-     private String name;
-     private int count;
-     private double price;
+    private final List<ShoppingCart> shoppingCartlist = new ArrayList<>();
+    private  String name;
+    private  int count;
+    private  double price;
 
     public ShoppingCart() {
 
@@ -31,15 +31,20 @@ public class ShoppingCart {
         return this.price;
     }
 
-     public void addShoppingCart(String menu) {
+     public void addShoppingCart(ShoppingCart menu) {
         this.shoppingCartlist.add(menu);
      }
 
-     public List<String> getShoppingCart() {
+     public List<ShoppingCart> getShoppingCart() {
          return this.shoppingCartlist;
      }
 
     public void clearShoppingCart() {
         this.shoppingCartlist.clear();
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s| W %.1f | %d", this.name, this.price, this.count);
     }
 }
