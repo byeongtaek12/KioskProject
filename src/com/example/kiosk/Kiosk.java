@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Kiosk {
     private final Scanner sc = new Scanner(System.in);
-    private ShoppingCart shoppingCart;
+    private final ShoppingCart shoppingCart = new ShoppingCart();
     private final List<Menu> Menulist = new ArrayList<>();
     private Menu menu;
     private int chooseChildMenu;
@@ -86,17 +86,8 @@ public class Kiosk {
         System.out.println("1. 확인        2. 취소");
         int chooseShoppingCartMenu = io("번호를 선택해주세요 : ", 1, 2);
         if (chooseShoppingCartMenu == 1) {
-            shoppingCart = new ShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).getName(),1,menu.getMenuItems().get(chooseChildMenu - 1).getPrice());
-            shoppingCart.addShoppingCart();
-            for (int i = 0; i<shoppingCart.getShoppingCart().size()-1; i++) {
-                for (int j = i+1; j<shoppingCart.getShoppingCart().size(); j++) {
-                    if (shoppingCart.getShoppingCart().get(i).equals(shoppingCart.getShoppingCart().get(j))) {
-                        shoppingCart.removeShoppingCart(j);
-                        shoppingCart.setCount();
-                    }
-                }
-            }
-            System.out.println(shoppingCart.getName() + "이 장바구니에 추가되었습니다");
+            shoppingCart.addShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).toString());
+            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
         } else {
             System.out.println("취소되었습니다");
         }
@@ -136,8 +127,11 @@ public class Kiosk {
     private double sumPriceShowShoppingCart() {
         double sum = 0;
         for (int i = 0; i < shoppingCart.getShoppingCart().size(); i++) {
+            String[] findPrice = shoppingCart.getShoppingCart().get(i).split("\\|");
+            String[] findPrice1 = findPrice[1].split(" ");
+            double findPrice2 = Double.parseDouble(findPrice1[2]);
             System.out.println(shoppingCart.getShoppingCart().get(i));
-            sum += shoppingCart.getPrice();
+            sum += findPrice2;
         }
         return sum;
     }
