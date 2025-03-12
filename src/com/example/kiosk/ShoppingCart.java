@@ -5,12 +5,9 @@ import java.util.List;
 
 public class ShoppingCart {
      private final List<String> shoppingCart = new ArrayList<>();
-     private String name;
-     private int count;
-     private double price;
-
-    public ShoppingCart() {
-    }
+     private final String name;
+     private final int count;
+     private final double price;
 
     public ShoppingCart(String name, int count, double price) {
         this.name=name;
@@ -30,8 +27,8 @@ public class ShoppingCart {
         return this.price;
     }
 
-     public void addShoppingCart(String menu) {
-         this.shoppingCart.add(menu);
+     public void addShoppingCart() {
+        this.shoppingCart.add(toString());
      }
 
      public List<String> getShoppingCart() {
@@ -40,5 +37,10 @@ public class ShoppingCart {
 
     public void removeShoppingCart() {
         this.shoppingCart.clear();
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s | W %.1f | count : %d", this.name, this.price,this.count);
     }
 }
