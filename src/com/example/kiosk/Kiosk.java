@@ -79,7 +79,7 @@ public class Kiosk {
         }
     }
 
-    // 카트 추가 및 취소 기능
+    // 카트 추가 및 취소 기능 메서드
     private void shoppingCartAddCancel() {
         System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).toString());
         System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
@@ -93,7 +93,7 @@ public class Kiosk {
         }
     }
 
-    // 카트에 담긴 음식 주문 및 취소 기능
+    // 카트에 담긴 음식 주문 및 취소 기능 메서드
     private int shoppingCartOrderCancel() {
         if (!shoppingCart.getShoppingCart().isEmpty()) {
             System.out.println();
@@ -123,7 +123,7 @@ public class Kiosk {
         return 0;
     }
 
-    // price 합계 계산 및 쇼핑카드에 담긴 음식 내역 출력
+    // price 합계 계산 및 쇼핑카드에 담긴 음식 내역 출력 메서드
     private double sumPriceShowShoppingCart() {
         double sum = 0;
         for (int i = 0; i < shoppingCart.getShoppingCart().size(); i++) {
