@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ShoppingCart {
      private final List<String> shoppingCartlist = new ArrayList<>();
-     private  String name;
+     private String name;
      private int count;
-     private  double price;
+     private double price;
 
     public ShoppingCart() {
 
