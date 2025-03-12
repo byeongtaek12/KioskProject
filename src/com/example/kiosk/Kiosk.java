@@ -123,7 +123,7 @@ public class Kiosk {
         return 0;
     }
 
-    // price 합계 계산 및 쇼핑카드에 담긴 음식 내역 출력 메서드
+    // price 합계 계산 및 쇼핑카드에 담긴 음식 출력 메서드
     private double sumPriceShowShoppingCart() {
         double sum = 0;
         for (int i = 0; i < shoppingCart.getShoppingCart().size(); i++) {
