@@ -86,7 +86,12 @@ public class Kiosk {
         System.out.println("1. 확인        2. 취소");
         int chooseShoppingCartMenu = io("번호를 선택해주세요 : ", 1, 2);
         if (chooseShoppingCartMenu == 1) {
-            shoppingCart.addShoppingCart(new ShoppingCart(menu.getMenuItems().get(chooseChildMenu - 1).getName(),1,menu.getMenuItems().get(chooseChildMenu - 1).getPrice()));
+            ShoppingCart shoppingCartTemp = new ShoppingCart(
+                    menu.getMenuItems().get(chooseChildMenu - 1).getName(),
+                    1,
+                    menu.getMenuItems().get(chooseChildMenu - 1).getPrice()
+            );
+            shoppingCart.addShoppingCart(shoppingCartTemp);
             System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
         } else {
             System.out.println("취소되었습니다");
@@ -128,7 +133,7 @@ public class Kiosk {
         double sum = 0;
         for (int i = 0; i < shoppingCart.getShoppingCart().size(); i++) {
             System.out.println(shoppingCart.getShoppingCart().get(i).toString());
-            sum += shoppingCart.getPrice();
+            sum += shoppingCart.getShoppingCart().get(i).getPrice();
         }
         return sum;
     }
