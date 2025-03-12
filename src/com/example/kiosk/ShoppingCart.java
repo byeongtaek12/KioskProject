@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-     private final List<String> shoppingCart = new ArrayList<>();
+     private final List<String> shoppingCartlist = new ArrayList<>();
      private final String name;
      private final int count;
      private final double price;
@@ -28,15 +28,15 @@ public class ShoppingCart {
     }
 
      public void addShoppingCart() {
-        this.shoppingCart.add(toString());
+        this.shoppingCartlist.add(toString());
      }
 
      public List<String> getShoppingCart() {
-         return this.shoppingCart;
+         return this.shoppingCartlist;
      }
 
     public void removeShoppingCart() {
-        this.shoppingCart.clear();
+        this.shoppingCartlist.clear();
     }
 
     @Override
