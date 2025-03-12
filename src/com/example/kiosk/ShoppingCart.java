@@ -6,7 +6,7 @@ import java.util.List;
 public class ShoppingCart {
      private final List<String> shoppingCartlist = new ArrayList<>();
      private final String name;
-     private final int count;
+     private int count;
      private final double price;
 
     public ShoppingCart(String name, int count, double price) {
@@ -23,6 +23,10 @@ public class ShoppingCart {
         return this.count;
     }
 
+    public void setCount() {
+        this.count++;
+    }
+
     public double getPrice() {
         return this.price;
     }
@@ -35,8 +39,12 @@ public class ShoppingCart {
          return this.shoppingCartlist;
      }
 
-    public void removeShoppingCart() {
+    public void clearShoppingCart() {
         this.shoppingCartlist.clear();
+    }
+
+    public void removeShoppingCart(int j) {
+        this.shoppingCartlist.remove(j);
     }
 
     @Override
