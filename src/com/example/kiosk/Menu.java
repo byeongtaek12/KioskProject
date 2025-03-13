@@ -36,7 +36,7 @@ public class Menu {
     public void showMenuCategory() {
         int i = menuItemlist.size()-1;
         for (MenuItem menuItem : menuItemlist) {
-            System.out.println(menuItemlist.size()-i +". " + menuItem.getName() + "  | W " + menuItem.getPrice() + " | " + menuItem.getExplanation());
+            System.out.println(menuItemlist.size()-i +". " + menuItem.toString());
             i--;
         }
     }
