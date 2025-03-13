@@ -14,9 +14,11 @@ public class MenuItem {
     public String getName() {
         return name;
     }
+
     public double getPrice() {
         return price;
     }
+
     public String getExplanation() {
         return explanation;
     }

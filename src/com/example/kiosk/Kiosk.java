@@ -107,7 +107,6 @@ public class Kiosk {
                 }
             }
             System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
-
         } else {
             System.out.println("취소되었습니다");
         }
