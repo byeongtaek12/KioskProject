@@ -2,7 +2,7 @@ package com.example.kiosk;
 
 public class ShoppingCartItem {
     private final String name;
-    private final int count;
+    private int count;
     private final double price;
 
     public ShoppingCartItem(String name, int count, double price) {
@@ -17,6 +17,10 @@ public class ShoppingCartItem {
 
     public int getCount() {
         return this.count;
+    }
+
+    public void setCount() {
+        this.count++;
     }
 
     public double getPrice() {
