@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    private final List<ShoppingCartItem> shoppingCartItems;
+    private final List<MenuItem> shoppingCartItems;
 
     public ShoppingCart() {
         shoppingCartItems = new ArrayList<>();
@@ -13,18 +13,18 @@ public class ShoppingCart {
     // 장바구니 내역 보여주고 합계 계산 메서드
     public double sumPriceShowShoppingCart() {
         double sum = 0;
-        for (ShoppingCartItem shoppingCartItem : shoppingCartItems) {
+        for (MenuItem shoppingCartItem : shoppingCartItems) {
             System.out.println(shoppingCartItem.toString());
             sum += shoppingCartItem.getPrice();
         }
         return sum;
     }
 
-    public List<ShoppingCartItem> getShoppingCartItems() {
+    public List<MenuItem> getShoppingCartItems() {
         return this.shoppingCartItems;
     }
 
-    public void addShoppingCartItems(ShoppingCartItem menu) {
+    public void addShoppingCartItems(MenuItem menu) {
         this.shoppingCartItems.add(menu);
     }
 
