@@ -33,6 +33,6 @@ public class ShoppingCartItem {
 
     @Override
     public String toString(){
-        return String.format("%s| W %.1f | %d", this.name, this.price, this.count);
+        return String.format("%s| W %.1f | + %d", this.name, this.price, this.count);
     }
 }
