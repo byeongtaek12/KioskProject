@@ -3,7 +3,7 @@ package com.example.kiosk;
 public class ShoppingCartItem {
     private final String name;
     private int count;
-    private final double price;
+    private double price;
 
     public ShoppingCartItem(String name, int count, double price) {
         this.name=name;
@@ -25,6 +25,10 @@ public class ShoppingCartItem {
 
     public double getPrice() {
         return this.price;
+    }
+
+    public void setPrice() {
+        this.price+=this.price;
     }
 
     @Override
