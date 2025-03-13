@@ -28,6 +28,10 @@ public class ShoppingCart {
         this.shoppingCartItems.add(menu);
     }
 
+    public void removeShoppingCartItems(int idx) {
+        this.shoppingCartItems.remove(idx);
+    }
+
     public void clearShoppingCartItems() {
         this.shoppingCartItems.clear();
     }
