@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class Kiosk {
     private final Scanner sc;
-    private final ShoppingCartService shoppingCartService;
+    private final ShoppingCart shoppingCart;
     private final List<Menu> Menulist;
     private Menu menu;
     private int chooseChildMenu;
 
     public Kiosk () {
         sc = new Scanner(System.in);
-        shoppingCartService = new ShoppingCartService();
+        shoppingCart = new ShoppingCart();
         Menulist = new ArrayList<>();
         Menulist.add(new Menu("Burgers"));
         Menulist.add(new Menu("Drinks"));
@@ -89,12 +89,12 @@ public class Kiosk {
         System.out.println("1. 확인        2. 취소");
         int chooseShoppingCartMenu = io("번호를 선택해주세요 : ", 1, 2);
         if (chooseShoppingCartMenu == 1) {
-            ShoppingCart shoppingCartTemp = new ShoppingCart(
+            ShoppingCartItem shoppingCartItemTemp = new ShoppingCartItem(
                     menu.getMenuItems().get(chooseChildMenu - 1).getName(),
                     1,
                     menu.getMenuItems().get(chooseChildMenu - 1).getPrice()
             );
-            shoppingCartService.addShoppingCartList(shoppingCartTemp);
+            shoppingCart.addShoppingCartList(shoppingCartItemTemp);
             System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
         } else {
             System.out.println("취소되었습니다");
@@ -103,14 +103,14 @@ public class Kiosk {
 
     // 장바구니에 담긴 음식 주문 및 취소 기능 메서드
     private int shoppingCartOrderCancel() {
-        if (!shoppingCartService.getShoppingCartList().isEmpty()) {
+        if (!shoppingCart.getShoppingCartList().isEmpty()) {
             System.out.println();
             System.out.println("[ ORDER MENU" + " ]");
             System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.\n5. Cancel       | 진행중인 주문을 취소합니다.");
             int chooseOrderMenu = io("메뉴를 선택해주세요 : ", 4, 5);
             if (chooseOrderMenu == 4) {
                 System.out.println("[ Orders" + " ]");
-                double sum = sumPriceShowShoppingCart();
+                double sum = shoppingCart.sumPriceShowShoppingCart();
                 System.out.println();
                 System.out.println("[ Total" + " ]");
                 System.out.println("W " + sum);
@@ -119,7 +119,7 @@ public class Kiosk {
                 int chooseOrderAndMenu = io("번호를 선택해주세요 : ", 1, 2);
                 if (chooseOrderAndMenu == 1) {
                     System.out.println("주문이 완료되었습니다. 금액은 W " + sum + " 입니다");
-                    shoppingCartService.clearShoppingCartList();
+                    shoppingCart.clearShoppingCartList();
                 } else {
                     System.out.println("메뉴판으로 되돌아갑니다");
                 }
@@ -129,15 +129,5 @@ public class Kiosk {
             }
         }
         return 0;
-    }
-
-    // price 합계 계산 및 장바구니에 담긴 음식 출력 메서드
-    private double sumPriceShowShoppingCart() {
-        double sum = 0;
-        for (int i = 0; i < shoppingCartService.getShoppingCartList().size(); i++) {
-            System.out.println(shoppingCartService.getShoppingCartList().get(i).toString());
-            sum += shoppingCartService.getShoppingCartList().get(i).getPrice();
-        }
-        return sum;
     }
 }
