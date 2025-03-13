@@ -1,17 +1,9 @@
 package com.example.kiosk;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShoppingCart {
-    private final List<ShoppingCart> shoppingCartlist = new ArrayList<>();
-    private  String name;
-    private  int count;
-    private  double price;
-
-    public ShoppingCart() {
-
-    }
+    private final String name;
+    private final int count;
+    private final double price;
 
     public ShoppingCart(String name, int count, double price) {
         this.name=name;
@@ -29,18 +21,6 @@ public class ShoppingCart {
 
     public double getPrice() {
         return this.price;
-    }
-
-     public void addShoppingCart(ShoppingCart menu) {
-        this.shoppingCartlist.add(menu);
-     }
-
-     public List<ShoppingCart> getShoppingCart() {
-         return this.shoppingCartlist;
-     }
-
-    public void clearShoppingCart() {
-        this.shoppingCartlist.clear();
     }
 
     @Override
