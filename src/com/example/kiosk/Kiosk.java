@@ -101,6 +101,7 @@ public class Kiosk {
                 for (int j = i+1; j<shoppingCart.getShoppingCartItems().size(); j++) {
                     if (shoppingCart.getShoppingCartItems().get(i).getName().equals(shoppingCart.getShoppingCartItems().get(j).getName())) {
                         shoppingCart.removeShoppingCartItems(j);
+                        shoppingCart.getShoppingCartItems().get(i).setPrice();
                         shoppingCart.getShoppingCartItems().get(i).setCount();
                     }
                 }
