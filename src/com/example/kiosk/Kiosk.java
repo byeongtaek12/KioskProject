@@ -95,9 +95,9 @@ public class Kiosk {
                     menu.getMenuItems().get(chooseChildMenu - 1).getExplanation(),
                     1
             );
+            shoppingCart.addShoppingCartItems(shoppingCartItemTemp);
 
             // 장바구니에 같은 메뉴가 들어왔을 때 사용
-            shoppingCart.addShoppingCartItems(shoppingCartItemTemp);
             for (int i = 0; i<shoppingCart.getShoppingCartItems().size()-1; i++) {
                 for (int j = i+1; j<shoppingCart.getShoppingCartItems().size(); j++) {
                     if (shoppingCart.getShoppingCartItems().get(i).getName().equals(shoppingCart.getShoppingCartItems().get(j).getName())) {
