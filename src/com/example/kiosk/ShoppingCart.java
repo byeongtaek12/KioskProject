@@ -10,7 +10,7 @@ public class ShoppingCart {
         shoppingCartItemlist = new ArrayList<>();
     }
 
-    // TODO 카트 안에 있는 아이템의 가격 합산
+    // 장바구니 내역 보여주고 합계 계산 메서드
     public double sumPriceShowShoppingCart() {
         double sum = 0;
         for (ShoppingCartItem shoppingCartItem : shoppingCartItemlist) {
@@ -20,19 +20,18 @@ public class ShoppingCart {
         return sum;
     }
 
-    // TODO 카트에 담겨있는 아이템 출력
     public List<ShoppingCartItem> getShoppingCartList() {
         return this.shoppingCartItemlist;
     }
 
-    // TODO 카트 비우기
+    public void addShoppingCartList(ShoppingCartItem menu) {
+        this.shoppingCartItemlist.add(menu);
+    }
+
     public void clearShoppingCartList() {
         this.shoppingCartItemlist.clear();
     }
 
-    // TODO 카트에 아이템 추가하기
-    public void addShoppingCartList(ShoppingCartItem menu) {
-        this.shoppingCartItemlist.add(menu);
-    }
+
 
 }
