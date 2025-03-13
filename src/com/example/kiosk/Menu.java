@@ -41,7 +41,7 @@ public class Menu {
         }
     }
 
-    public List<MenuItem> getMenuItems() {
+    public List<MenuItem> getMenuItemlist() {
         return this.menuItemlist;
     }
 

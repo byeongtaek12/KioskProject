@@ -20,7 +20,7 @@ public class ShoppingCart {
         return sum;
     }
 
-    public List<ShoppingCartItem> getShoppingCartList() {
+    public List<ShoppingCartItem> getShoppingCartItemList() {
         return this.shoppingCartItemlist;
     }
 
@@ -31,7 +31,4 @@ public class ShoppingCart {
     public void clearShoppingCartList() {
         this.shoppingCartItemlist.clear();
     }
-
-
-
 }
