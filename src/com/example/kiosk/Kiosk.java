@@ -89,10 +89,11 @@ public class Kiosk {
         System.out.println("1. 확인        2. 취소");
         int chooseShoppingCartMenu = io("번호를 선택해주세요 : ", 1, 2);
         if (chooseShoppingCartMenu == 1) {
-            ShoppingCartItem shoppingCartItemTemp = new ShoppingCartItem(
+            MenuItem shoppingCartItemTemp = new MenuItem(
                     menu.getMenuItems().get(chooseChildMenu - 1).getName(),
-                    1,
-                    menu.getMenuItems().get(chooseChildMenu - 1).getPrice()
+                    menu.getMenuItems().get(chooseChildMenu - 1).getPrice(),
+                    menu.getMenuItems().get(chooseChildMenu - 1).getExplanation(),
+                    1
             );
 
             // 장바구니에 같은 메뉴가 들어왔을 때 사용
