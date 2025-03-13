@@ -6,13 +6,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
-    private final Scanner sc = new Scanner(System.in);
-    private final ShoppingCart shoppingCart = new ShoppingCart();
-    private final List<Menu> Menulist = new ArrayList<>();
+    private final Scanner sc;
+    private final ShoppingCart shoppingCart;
+    private final List<Menu> Menulist;
     private Menu menu;
     private int chooseChildMenu;
 
     public Kiosk () {
+        sc = new Scanner(System.in);
+        shoppingCart = new ShoppingCart();
+        Menulist = new ArrayList<>();
         Menulist.add(new Menu("Burgers"));
         Menulist.add(new Menu("Drinks"));
         Menulist.add(new Menu("Desserts"));
