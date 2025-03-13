@@ -94,10 +94,9 @@ public class Kiosk {
                     1,
                     menu.getMenuItems().get(chooseChildMenu - 1).getPrice()
             );
-            shoppingCart.addShoppingCartItems(shoppingCartItemTemp);
 
             // 장바구니에 같은 메뉴가 들어왔을 때 사용
-            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
+            shoppingCart.addShoppingCartItems(shoppingCartItemTemp);
             for (int i = 0; i<shoppingCart.getShoppingCartItems().size()-1; i++) {
                 for (int j = i+1; j<shoppingCart.getShoppingCartItems().size(); j++) {
                     if (shoppingCart.getShoppingCartItems().get(i).getName().equals(shoppingCart.getShoppingCartItems().get(j).getName())) {
@@ -106,6 +105,8 @@ public class Kiosk {
                     }
                 }
             }
+            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
+
         } else {
             System.out.println("취소되었습니다");
         }
