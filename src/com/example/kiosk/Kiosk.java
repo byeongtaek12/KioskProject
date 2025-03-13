@@ -96,7 +96,7 @@ public class Kiosk {
             );
             shoppingCart.addShoppingCartItems(shoppingCartItemTemp);
 
-            // 장바구니의 같은 메뉴가 추가됐을 때 수량 증가시키는 메서드
+            // 장바구니의 같은 메뉴가 추가됐을 때 수량 증가
             for (int i = 0; i<shoppingCart.getShoppingCartItems().size()-1; i++) {
                 for (int j = i+1; j<shoppingCart.getShoppingCartItems().size(); j++) {
                     if (shoppingCart.getShoppingCartItems().get(i).getName().equals(shoppingCart.getShoppingCartItems().get(j).getName())) {
