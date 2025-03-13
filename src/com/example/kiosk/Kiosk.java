@@ -52,7 +52,7 @@ public class Kiosk {
                 System.out.println("되돌아갑니다");
                 continue;
             } else {
-                System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItemlist().get(chooseChildMenu - 1).toString());
+                System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
                 System.out.println();
                 System.out.println();
                 shoppingCartAddCancel();
@@ -84,18 +84,18 @@ public class Kiosk {
 
     // 장바구니 추가 및 취소 기능 메서드
     private void shoppingCartAddCancel() {
-        System.out.println(menu.getMenuItemlist().get(chooseChildMenu - 1).toString());
+        System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).toString());
         System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
         System.out.println("1. 확인        2. 취소");
         int chooseShoppingCartMenu = io("번호를 선택해주세요 : ", 1, 2);
         if (chooseShoppingCartMenu == 1) {
             ShoppingCartItem shoppingCartItemTemp = new ShoppingCartItem(
-                    menu.getMenuItemlist().get(chooseChildMenu - 1).getName(),
+                    menu.getMenuItems().get(chooseChildMenu - 1).getName(),
                     1,
-                    menu.getMenuItemlist().get(chooseChildMenu - 1).getPrice()
+                    menu.getMenuItems().get(chooseChildMenu - 1).getPrice()
             );
             shoppingCart.addShoppingCartList(shoppingCartItemTemp);
-            System.out.println(menu.getMenuItemlist().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
+            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
         } else {
             System.out.println("취소되었습니다");
         }
