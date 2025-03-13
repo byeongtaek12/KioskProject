@@ -94,7 +94,7 @@ public class Kiosk {
                     1,
                     menu.getMenuItems().get(chooseChildMenu - 1).getPrice()
             );
-            shoppingCart.addShoppingCartList(shoppingCartItemTemp);
+            shoppingCart.addShoppingCartItems(shoppingCartItemTemp);
             System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
         } else {
             System.out.println("취소되었습니다");
@@ -103,7 +103,7 @@ public class Kiosk {
 
     // 장바구니에 담긴 음식 주문 및 취소 기능 메서드
     private int shoppingCartOrderCancel() {
-        if (!shoppingCart.getShoppingCartItemList().isEmpty()) {
+        if (!shoppingCart.getShoppingCartItems().isEmpty()) {
             System.out.println();
             System.out.println("[ ORDER MENU" + " ]");
             System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.\n5. Cancel       | 진행중인 주문을 취소합니다.");
@@ -119,7 +119,7 @@ public class Kiosk {
                 int chooseOrderAndMenu = io("번호를 선택해주세요 : ", 1, 2);
                 if (chooseOrderAndMenu == 1) {
                     System.out.println("주문이 완료되었습니다. 금액은 W " + sum + " 입니다");
-                    shoppingCart.clearShoppingCartList();
+                    shoppingCart.clearShoppingCartItems();
                 } else {
                     System.out.println("메뉴판으로 되돌아갑니다");
                 }
