@@ -13,10 +13,12 @@ public class ShoppingCart {
     // 장바구니 내역 보여주고 합계 계산 메서드
     public double sumPriceShowShoppingCart() {
         double sum = 0;
-        for (MenuItem shoppingCartItem : shoppingCartItems) {
-            System.out.println(shoppingCartItem.toString());
-            sum += shoppingCartItem.getPrice();
-        }
+//        for (MenuItem shoppingCartItem : shoppingCartItems) {
+//            System.out.println(shoppingCartItem.toString());
+//            sum += shoppingCartItem.getPrice();
+//        }
+        shoppingCartItems.forEach(item -> System.out.println(item.toString()));
+        sum = shoppingCartItems.stream().mapToDouble(MenuItem::getPrice).sum();
         return sum;
     }
 
