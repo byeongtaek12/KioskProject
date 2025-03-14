@@ -10,7 +10,6 @@ public class Kiosk {
     private final ShoppingCart shoppingCart;
     private final List<Menu> Menulist;
     private Menu menu;
-    private int chooseChildMenu;
 
     public Kiosk () {
         sc = new Scanner(System.in);
@@ -47,7 +46,7 @@ public class Kiosk {
             menu.showMenuCategory();
             System.out.println("0. 되돌아가기      | 되돌아가기");
             System.out.println();
-            chooseChildMenu = io("메뉴를 선택해주세요 : ",0,4);
+            int chooseChildMenu = io("메뉴를 선택해주세요 : ",0,4);
             if (chooseChildMenu == 0) {
                 System.out.println("되돌아갑니다");
                 continue;
@@ -55,7 +54,7 @@ public class Kiosk {
                 System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
                 System.out.println();
                 System.out.println();
-                shoppingCartAddCancel();
+                shoppingCartAddCancel(chooseChildMenu-1);
             }
             int s = shoppingCartOrderCancel();
             if (s==1) {break;}
@@ -83,31 +82,30 @@ public class Kiosk {
     }
 
     // 장바구니 추가 및 취소 기능 메서드
-    private void shoppingCartAddCancel() {
-        System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).toString());
+    private void shoppingCartAddCancel(int idx) {
+        MenuItem menuItem = menu.getMenuItems().get(idx);
+        List<MenuItem> shoppingCart1 = shoppingCart.getShoppingCartItems();
+
+        System.out.println(menuItem.toString());
         System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
         System.out.println("1. 확인        2. 취소");
         int chooseShoppingCartMenu = io("번호를 선택해주세요 : ", 1, 2);
         if (chooseShoppingCartMenu == 1) {
-            MenuItem shoppingCartItemTemp = new MenuItem(
-                    menu.getMenuItems().get(chooseChildMenu - 1).getName(),
-                    menu.getMenuItems().get(chooseChildMenu - 1).getPrice(),
-                    menu.getMenuItems().get(chooseChildMenu - 1).getExplanation(),
-                    1
-            );
+            MenuItem shoppingCartItemTemp = new MenuItem(menuItem.getName(), menuItem.getPrice(),
+                    menuItem.getExplanation(), 1);
             shoppingCart.addShoppingCartItems(shoppingCartItemTemp);
 
             // 장바구니에 같은 메뉴가 들어왔을 때 사용
-            for (int i = 0; i<shoppingCart.getShoppingCartItems().size()-1; i++) {
-                for (int j = i+1; j<shoppingCart.getShoppingCartItems().size(); j++) {
-                    if (shoppingCart.getShoppingCartItems().get(i).getName().equals(shoppingCart.getShoppingCartItems().get(j).getName())) {
+            for (int i = 0; i<shoppingCart1.size()-1; i++) {
+                for (int j = i+1; j<shoppingCart1.size(); j++) {
+                    if (shoppingCart1.get(i).getName().equals(shoppingCart1.get(j).getName())) {
                         shoppingCart.removeShoppingCartItems(j);
-                        shoppingCart.getShoppingCartItems().get(i).setPrice();
-                        shoppingCart.getShoppingCartItems().get(i).setCount();
+                        shoppingCart1.get(i).setPrice();
+                        shoppingCart1.get(i).setCount();
                     }
                 }
             }
-            System.out.println(menu.getMenuItems().get(chooseChildMenu - 1).getName() + "이 장바구니에 추가되었습니다");
+            System.out.println(menuItem.getName() + "이 장바구니에 추가되었습니다");
         } else {
             System.out.println("취소되었습니다");
         }
