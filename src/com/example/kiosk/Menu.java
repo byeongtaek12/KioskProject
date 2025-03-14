@@ -1,7 +1,5 @@
 package com.example.kiosk;
 
-import com.sun.jdi.LongValue;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
