@@ -77,3 +77,6 @@ public class MenuItem {
    0 <- // 0을 입력
    프로그램을 종료합니다.
 ```
+#### Lv5. 캡슐화 적용하기
+- MenuItem, Menu 그리고 Kiosk 클래스의 필드에 직접 접근하지 못하도록 설정
+- Getter와 Setter 메서드를 사용해 데이터를 관리
