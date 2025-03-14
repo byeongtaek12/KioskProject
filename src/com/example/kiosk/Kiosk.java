@@ -51,7 +51,8 @@ public class Kiosk {
                 System.out.println("되돌아갑니다");
                 continue;
             } else {
-                System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " + chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
+                System.out.println("선택한 " + menu.getCategory() + "메뉴 :  " +
+                        chooseChildMenu + ". " + menu.getMenuItems().get(chooseChildMenu - 1).toString());
                 System.out.println();
                 System.out.println();
                 shoppingCartAddCancel(chooseChildMenu-1);
