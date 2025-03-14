@@ -1,9 +1,9 @@
-#### Lv4. 객체 지향 설계를 적용해 음식 메뉴와 주문 내역을 클래스 기반으로 관리하기
+## Lv4. 객체 지향 설계를 적용해 음식 메뉴와 주문 내역을 클래스 기반으로 관리하기
 - Menu 클래스 생성(필드: 카테고리 이름)
 - List<MenuItem> 은 Kiosk 클래스가 관리하기에 적절하지 않으므로 Menu 클래스가 관리하도록 변경
 - 메뉴 카테고리 이름을 반환하는 메서드가 구현
 
-#### <br>구조 예시
+### <br>구조 예시
 ```public static void main(String[] args) {
 // Menu 객체 생성하면서 카테고리 이름 설정
 // Menu 클래스 내 있는 List<MenuItem> 에 MenuItem 객체 생성하면서 삽입
@@ -51,7 +51,7 @@ public class MenuItem {
 		// 구조에 맞게 함수를 선언해놓고 가져다 사용하세요.
 }
 ```
-#### <br>터미널 예시
+### <br>터미널 예시
 ```
 [ MAIN MENU ]
 1. Burgers
@@ -77,6 +77,6 @@ public class MenuItem {
    0 <- // 0을 입력
    프로그램을 종료합니다.
 ```
-#### Lv5. 캡슐화 적용하기
+## Lv5. 캡슐화 적용하기
 - MenuItem, Menu 그리고 Kiosk 클래스의 필드에 직접 접근하지 못하도록 설정
 - Getter와 Setter 메서드를 사용해 데이터를 관리
