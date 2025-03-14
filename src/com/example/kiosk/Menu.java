@@ -1,7 +1,10 @@
 package com.example.kiosk;
 
+import com.sun.jdi.LongValue;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Menu {
     private final String category;
@@ -34,11 +37,15 @@ public class Menu {
     }
 
     public void showMenuCategory() {
-        int i = menuItems.size()-1;
-        for (MenuItem menuItem : menuItems) {
-            System.out.println(menuItems.size()-i +". " + menuItem.toString());
-            i--;
-        }
+//        int i = menuItems.size()-1;
+//        for (MenuItem menuItem : menuItems) {
+//            System.out.println(menuItems.size()-i +". " + menuItem.toString());
+//            i--;
+//        }
+        int menuNumber = IntStream.range(1,menuItems.size())
+                .findFirst()
+                .orElse(0);
+        menuItems.forEach(menuItem -> System.out.println(menuNumber+". "+menuItem.toString()));
     }
 
     public List<MenuItem> getMenuItems() {
