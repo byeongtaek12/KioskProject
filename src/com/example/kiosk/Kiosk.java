@@ -132,7 +132,13 @@ public class Kiosk {
                 if (chooseOrderAndMenu == 1) {
                     showDiscountMenu();
                     int chooseDiscountMenu = io("번호를 선택해주세요 : ", 1, 4);
-                    System.out.println("주문이 완료되었습니다. 금액은 W " + sum + " 입니다");
+                    switch (chooseDiscountMenu) {
+                        case 1-> sum*=0.9;
+                        case 2-> sum*=0.95;
+                        case 3-> sum*=0.97;
+                        default-> sum*=1;
+                    }
+                    System.out.println("주문이 완료되었습니다. 금액은 W " + String.format("%.1f", sum) + " 입니다");
                     shoppingCart.clearShoppingCartItems();
                 } else {
                     System.out.println("메뉴판으로 되돌아갑니다");
@@ -148,7 +154,7 @@ public class Kiosk {
     public void showDiscountMenu() {
         System.out.println("할인 정보를 입력해주세요.");
         for (Discount discount: Discount.values()) {
-            System.out.println(discount.ordinal()+1 +". 국가유공자 : "+ discount.getDiscount());
+            System.out.println(discount.ordinal()+1 +". " + discount.getType() +" : " + discount.getDiscount());
         }
     }
 }
